@@ -1,0 +1,177 @@
+<section class="main">
+  <div class="container">
+    <h1 class="main-title">
+      Создадим сад <br>
+      в вашем доме и офисе
+    </h1>
+    <p class="main-text">
+      Если в большом городе вы скучаете по природе, ничто не мешает вам превратить в оазис квартиру или офис. И мы
+      поможем вам это сделать!
+    </p>
+  </div>
+</section>
+
+<section class="offers">
+  <div class="container">
+    <div class="offer offer-insta">
+      <p class="offer-title">
+        Получи скидку 10% в нашем инстаграме!
+      </p>
+      <div class="offer-content">
+        <div class="offer-image">
+          <img src="/assets/images/page/main/offer-1.png" alt="Image">
+        </div>
+        <div class="offer-inner-content">
+          <p class="offer-text">Подпишись на наш аккаунт и напиши в direct “хочу промокод” </p>
+          <div class="offer-button">
+            <a href="https://instagram.com" target="_blank" class="button">Получить промокод</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offer offer-collection">
+      <p class="offer-title">
+        Новая коллекция керамических кашпо в наличии
+      </p>
+      <div class="offer-content">
+        <div class="offer-image">
+          <img src="/assets/images/page/main/offer-2.png" alt="Image">
+        </div>
+        <div class="offer-button">
+          <a routerLink="/catalog" class="button">В каталог</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="best-products">
+  <div class="container">
+    <div class="carousel-header">
+      <p class="carousel-title">
+        Лучшие предложения месяца
+      </p>
+      <div class="carousel-arrows">
+        <a class="move-backword" (click)="owlCar.prev()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5561 15C10.4013 15 10.2465 14.9435 10.1243 14.8224L4.8127 9.55746C3.94915 8.70151 3.94915 7.29647 4.8127 6.44052L10.1243 1.17563C10.3606 0.941456 10.7516 0.941456 10.9879 1.17563C11.2241 1.40981 11.2241 1.7974 10.9879 2.03158L5.67624 7.29647C5.2852 7.68407 5.2852 8.31392 5.67624 8.70151L10.9879 13.9664C11.2241 14.2006 11.2241 14.5882 10.9879 14.8224C10.8657 14.9354 10.7109 15 10.5561 15Z" fill="#202B21"/>
+          </svg>
+        </a>
+        <a class="move-forward" (click)="owlCar.next()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.44392 1C5.59871 1 5.75349 1.05652 5.87569 1.17765L11.1873 6.44254C12.0508 7.29849 12.0508 8.70353 11.1873 9.55948L5.87569 14.8244C5.63944 15.0585 5.2484 15.0585 5.01215 14.8244C4.7759 14.5902 4.7759 14.2026 5.01215 13.9684L10.3238 8.70353C10.7148 8.31593 10.7148 7.68608 10.3238 7.29849L5.01215 2.0336C4.7759 1.79942 4.7759 1.41182 5.01215 1.17765C5.13435 1.0646 5.28914 1 5.44392 1Z" fill="#202B21"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="carousel-items">
+      <owl-carousel-o [options]="customOptions" #owlCar>
+        <ng-template carouselSlide *ngFor="let product of products">
+          <product-card [product]="product"></product-card>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+
+<section class="info">
+  <div class="container">
+    <p class="info-title">
+      Доставка и оплата
+    </p>
+    <div class="info-item info-delivery">
+      <div class="info-image">
+        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35" cy="35" r="35" fill="#2A592E"/>
+          <path d="M16.9473 23.0544C16.9473 21.7165 18.0319 20.6318 19.3698 20.6318H43.6841C44.7887 20.6318 45.6841 21.5273 45.6841 22.6318V25.9594C45.6841 26.4859 46.0923 26.9222 46.6176 26.9572L47.3158 27.0038C49.7367 27.1652 51.9015 28.5687 53.0367 30.7131L54.0764 32.6769C54.3689 33.2295 54.8268 33.6769 55.3861 33.9565L55.6315 34.0792L56.4873 34.5071C56.6532 34.5901 56.8265 34.6575 57.0048 34.7084L58.459 35.1239C58.9951 35.2771 59.4211 35.685 59.5974 36.2139C59.6548 36.3861 59.6841 36.5665 59.6841 36.7481V43.4213C59.6841 45.0782 58.341 46.4213 56.6841 46.4213H54.5262C54.5262 46.4213 54.5262 40.1582 48.9999 40.1582C43.4736 40.1582 43.4736 46.4213 43.4736 46.4213H32.4209C32.4209 46.4213 32.4209 40.1582 26.5262 40.1582C20.6315 40.1582 20.9999 46.4213 20.9999 46.4213H19.9473C18.2904 46.4213 16.9473 45.0782 16.9473 43.4213V40.9476C16.9473 39.2908 18.2904 37.9476 19.9473 37.9476H26.0675C26.6051 37.9476 27.1288 37.7773 27.5635 37.4611L28.0341 37.1189C29.362 36.1532 29.194 34.1236 27.7254 33.3893C27.4214 33.2373 27.0861 33.1582 26.7461 33.1582H18.2367C17.5246 33.1582 16.9473 32.5808 16.9473 31.8687C16.9473 31.1565 17.5246 30.5792 18.2367 30.5792H27.9999H30.3668C31.7047 30.5792 32.7894 29.4946 32.7894 28.1566C32.7894 26.8406 31.7388 25.7653 30.4231 25.7347L19.3135 25.4763C17.9979 25.4457 16.9473 24.3704 16.9473 23.0544Z" fill="white"/>
+          <circle cx="26.8944" cy="46.0531" r="4.05263" fill="white"/>
+          <circle cx="26.8948" cy="46.0526" r="1.84211" fill="#2A592E"/>
+          <circle cx="48.9999" cy="46.0531" r="4.05263" fill="white"/>
+          <circle cx="49.0003" cy="46.0526" r="1.84211" fill="#2A592E"/>
+          <path d="M45.6836 28.7371H47.2355C48.3752 28.7371 49.4789 29.1366 50.3544 29.8663C50.9175 30.3355 51.3674 30.9257 51.6707 31.5929L53.052 34.6318H45.6836V28.7371Z" fill="#2A592E"/>
+          <rect x="14" y="26.5269" width="17.6842" height="2.94737" rx="1.47368" fill="white"/>
+          <rect x="11.0527" y="33.8943" width="16.9474" height="2.94737" rx="1.47368" fill="white"/>
+        </svg>
+      </div>
+      <div class="info-text">
+        <p class="info-text-main">
+          1. Доставка курьером (по г. Минску) - 10 BYN
+        </p>
+        <div class="info-text-extra">
+          На следующий день после оформления заказа
+        </div>
+      </div>
+      <div class="info-text">
+        <p class="info-text-main">
+          2. Самовывоз - 0 BYN
+        </p>
+        <div class="info-text-extra">
+          Пункт выдачи товаров: г. Минск, ул. Калиновского 61, подъезд 1, офис 6
+        </div>
+      </div>
+    </div>
+    <div class="info-item info-payment">
+      <div class="info-image">
+        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35" cy="35" r="35" fill="#2A592E"/>
+          <rect x="27.1777" y="32.6926" width="30.4211" height="21.579" rx="4" stroke="white" stroke-width="2"/>
+          <rect x="26.1777" y="39.0615" width="32.4211" height="4.42105" fill="white"/>
+          <path d="M12.3773 37.1557C10.4247 35.203 10.4247 32.0372 12.3773 30.0846L25.6636 16.7984C27.6162 14.8457 30.782 14.8457 32.7346 16.7984L42.3293 26.3931C43.0544 27.1181 43.1949 28.2428 42.6705 29.1239C42.2664 29.8028 41.5347 30.2188 40.7447 30.2188L26.4321 30.2188C25.2902 30.2188 24.3801 31.1733 24.4344 32.3139L25.0353 44.934C25.0586 45.4224 24.9006 45.9021 24.5918 46.2811C23.8496 47.1918 22.483 47.2613 21.6523 46.4306L12.3773 37.1557Z" fill="white"/>
+          <rect x="28.3906" y="25.4539" width="6.00012" height="4.42105" transform="rotate(-45 28.3906 25.4539)" fill="#2A592E"/>
+        </svg>
+      </div>
+      <div class="info-text">
+        <p class="info-text-main">
+          1. Наличный расчет при получении
+        </p>
+      </div>
+      <div class="info-text">
+        <p class="info-text-main">
+          2. Безналичный расчет при получении
+        </p>
+      </div>
+      <div class="info-text">
+        <p class="info-text-main">
+          3. Оплата банковской картой в интернет-магазине
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="container">
+    <p class="reviews-title">Отзывы о Home decor</p>
+    <div class="reviews-carousel">
+
+      <owl-carousel-o [options]="customOptionsReviews" #owlCarRev>
+        <ng-template carouselSlide  *ngFor="let review of reviews">
+          <div class="review-item">
+            <div class="review-item-head">
+              <div class="review-item-image" style="background-image: url('/assets/images/page/main/review/{{review.image}}')"></div>
+              <p class="review-item-name">{{review.name}}</p>
+            </div>
+            <div class="review-item-text">{{review.text}}</div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+
+      <div class="reviews-arrows">
+        <a class="move-backward" (click)="owlCarRev.prev()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5551 15C10.4003 15 10.2455 14.9435 10.1233 14.8224L4.81172 9.55746C3.94818 8.70151 3.94818 7.29647 4.81172 6.44052L10.1233 1.17563C10.3596 0.941456 10.7506 0.941456 10.9869 1.17563C11.2231 1.40981 11.2231 1.7974 10.9869 2.03158L5.67526 7.29647C5.28423 7.68407 5.28423 8.31392 5.67526 8.70151L10.9869 13.9664C11.2231 14.2006 11.2231 14.5882 10.9869 14.8224C10.8647 14.9354 10.7099 15 10.5551 15Z" fill="#202B21"/>
+          </svg>
+        </a>
+        <a class="move-forward" (click)="owlCarRev.next()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.44392 1C5.59871 1 5.75349 1.05652 5.87569 1.17765L11.1873 6.44254C12.0508 7.29849 12.0508 8.70353 11.1873 9.55948L5.87569 14.8244C5.63944 15.0585 5.2484 15.0585 5.01215 14.8244C4.7759 14.5902 4.7759 14.2026 5.01215 13.9684L10.3238 8.70353C10.7148 8.31593 10.7148 7.68608 10.3238 7.29849L5.01215 2.0336C4.7759 1.79942 4.7759 1.41182 5.01215 1.17765C5.13435 1.0646 5.28914 1 5.44392 1Z" fill="#202B21"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map">
+  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A76abf317b8e23b66082af27f974ff89135f91fbcf965dca68921607d7d5b8533&amp;source=constructor" width="100%" height="500" frameborder="0"></iframe>
+</section>

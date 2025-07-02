@@ -1,0 +1,106 @@
+@import "../../../../assets/styles/variables";
+
+.footer {
+  background-color: #648F64;
+  padding: 39px 0 50px;
+
+  .container {
+    display: flex;
+
+    a.logo {
+      margin-right: 63px;
+      img {
+        max-width: 148px;
+        max-height: 137px;
+      }
+    }
+  }
+
+  &-block {
+    margin-top: 11px;
+  }
+  &-head {
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: $gray-text-color;
+    margin-bottom: 25px;
+  }
+
+  &-items {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin-bottom: 11px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        a {
+          font-size: 16px;
+          text-decoration: none;
+          color: $gray-text-color;
+        }
+      }
+    }
+  }
+
+  &-menu {
+    margin-right: 57px;
+  }
+
+  &-categories {
+    margin-right: 34px;
+  }
+
+  &-info {
+    margin-right: 63px;
+    .footer-head {
+      margin-bottom: 15px;
+    }
+  }
+
+  &-social {
+    display: flex;
+    align-items: center;
+    margin-bottom: 55px;
+    a {
+      margin-right: 12px;
+    }
+  }
+
+  &-payment {
+    display:grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-auto-flow: row;
+    gap: 10px;
+    max-width: 230px;
+    &-item {
+      height: 35px;
+      background-position: top;
+    }
+  }
+
+  &-contacts {
+    max-width: 253px;
+    font-size: 16px;
+  }
+  &-contact {
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &-head {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: $gray-text-color;
+    }
+
+    &-info {
+      color: $gray-text-color;
+    }
+  }
+}

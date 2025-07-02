@@ -1,0 +1,128 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.cart {
+  padding: 50px 0 110px;
+
+  &-title {
+    @include head-lora-36;
+  }
+
+  &-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 0 160px;
+  }
+
+  &-empty {
+    margin: 20px 0 100px;
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    .button {
+      width: 255px;
+    }
+  }
+
+  &-products {
+    width: 678px;
+  }
+
+  &-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #ebebeb;
+    padding-top: 20px;
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+    &-image {
+      background-position: center;
+      background-size: cover;
+      height: 80px;
+      width: 80px;
+      border-radius: 5px;
+      margin-right: 26px;
+    }
+    &-name {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 130%;
+      color: $green-text-color;
+      width: 247px;
+      margin-right: 10px;
+    }
+    &-price {
+      margin-left: 69px;
+      font-family: "Monserrat", sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: $gray-text-color;
+      margin-right: 19px;
+    }
+    &-remove {
+      cursor: pointer;
+    }
+  }
+
+  &-details {
+    width: 501px;
+
+    &-info {
+      background-color: #e7f1e8;
+      padding: 40px;
+      border-radius: 5px;
+      margin-bottom: 12px;
+      &-title {
+        font-family: "Lora", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 26px;
+        color: $green-text-color;
+        margin-bottom: 20px;
+      }
+      &-item {
+        display: flex;
+        align-items: center;
+        color: $gray-text-color;
+        &.first {
+          margin-bottom: 10px;
+        }
+        &-text {
+          font-size: 16px;
+          margin-right: 12px;
+        }
+        &-data {
+          font-weight: 500;
+          font-size: 20px;
+        }
+      }
+      &-delivery {
+        font-style: italic;
+        font-weight: 300;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    }
+    &-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .button {
+        width: 234px;
+        &-transparent {
+          width: 255px;
+          margin-right: 12px;
+          color: #6cac72;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import "../../../../assets/styles/variables";
+
+.catalog {
+  &-filter {
+    margin-bottom: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: $gray-text-color;
+    &-head {
+      background-color: #b6d5b9;
+      border-radius: 5px;
+      padding: 12px 23px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+
+      svg {
+        margin-top: 2px;
+      }
+    }
+
+    &.open .catalog-filter-head {
+      border-radius: 5px 5px 0 0 ;
+    }
+
+    &-body {
+      display: none;
+      border-radius: 0 0 5px 5px;
+      border: 1px solid #b6d5b9;
+      padding: 12px 16px;
+    }
+    &-checkbox {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 19px;
+      line-height: 130%;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+      input {
+        margin-right: 10px;
+      }
+    }
+    &-from-to {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &.open .catalog-filter-body {
+      display: block;
+    }
+  }
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}

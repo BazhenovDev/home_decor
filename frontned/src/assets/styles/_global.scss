@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  height: 100%;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+.input {
+  box-sizing: border-box;
+  border: 2px solid #2a592e;
+  border-radius: 3px;
+  padding: 17px 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: $gray-text-color;
+}
+
+.small-input {
+  border: 1px solid #6cac72;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px;
+  box-sizing: border-box;
+  width: 40px;
+  height: 28px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: $green-text-color;
+}
+
+.button {
+  text-align: center;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: $green-button-color;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  transition: .2s linear all;
+
+  &-transparent {
+    background-color: transparent;
+    border: 1px solid #6cac72;
+    color: $green-text-color;
+  }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      margin-left: 16px;
+    }
+  }
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+
+  &.button-in-cart span {
+    &:first-child {
+      display: block;
+    }
+    &:last-child {
+      display: none;
+    }
+  }
+
+  &:hover {
+    &.button-in-cart {
+      border-color: red;
+    }
+    &.button-in-cart span {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+}
+
+a.button {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.mat-menu {
+  &-content {
+    background-color: white;
+  }
+  &-item {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: $green-text-color;
+    a {
+      text-decoration: none;
+      color: $green-text-color;
+    }
+  }
+}
+
+.carousel {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  &-title {
+    @include head-lora-32;
+  }
+  &-arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    a {
+      cursor: pointer;
+    }
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: grid;
+  place-items: center;
+  z-index: 5;
+  .flower {
+    animation: spin 2s infinite linear;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

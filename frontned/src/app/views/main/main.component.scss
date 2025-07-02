@@ -1,0 +1,213 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.main {
+  background-image: url("../../../assets/images/page/main/main-image.png");
+  background-repeat: no-repeat;
+  background-position-x: calc(50% + 210px);
+  padding-top: 58px;
+  padding-bottom: 231px;
+
+  &-title {
+    font-family: "Lora", sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 130%;
+    color: #2a592e;
+    margin-bottom: 67px;
+  }
+
+  &-text {
+    font-size: 18px;
+    line-height: 140%;
+    color: $green-text-color;
+    max-width: 528px;
+  }
+}
+
+.offers {
+  background-color: #A4CBA3;
+  padding: 80px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    .offer {
+      box-sizing: border-box;
+      width: 600px;
+      height: 250px;
+      padding: 35px 35px 0 35px;
+      background-color: #FFF;
+      border-radius: 5px;
+
+      &-title {
+        font-size: 20px;
+        line-height: 130%;
+        color: $green-text-color;
+      }
+      &-content {
+        display: flex;
+      }
+      &-text {
+        font-size: 16px;
+        line-height: 130%;
+        color: $green-text-color;
+      }
+
+      &-insta {
+        .offer-image {
+          margin-top: 35px;
+        }
+        .offer-text {
+          margin-top: 16px;
+          margin-left: 58px;
+          max-width: 234px;
+        }
+        .offer-button {
+          margin-top: 22px;
+          margin-left: 168px;
+          .button {
+            width: 228px;
+          }
+        }
+
+      }
+      &-collection {
+        .offer-title {
+          max-width: 362px;
+        }
+        .offer-image {
+          margin-top: 12px;
+          margin-left: 81px;
+        }
+        .offer-button {
+          margin-top: 75px;
+          margin-left: 45px;
+          .button {
+            width: 177px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.best-products {
+  padding: 120px 0 130px;
+}
+
+.info {
+  background-color: #A4CBA3;
+  background-image: url("../../../assets/images/page/main/info-bg.png");
+  background-repeat: no-repeat;
+  background-position-x: calc(50% + 340px);
+  padding: 80px 0;
+  &-title {
+    @include head-lora-32;
+    margin-bottom: 5px;
+  }
+  &-item {
+    margin-top: 35px;
+    max-width: 442px;
+    color: #000;
+  }
+  &-image {
+    margin-bottom: 30px;
+  }
+  &-text {
+    font-size: 16px;
+    &-extra {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 130%;
+      margin-top: 8px;
+    }
+  }
+  &-delivery {
+    .info {
+      &-text {
+        &:last-child {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+  &-payment {
+    .info {
+      &-text {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.reviews {
+  padding: 130px 0;
+  &-title {
+    @include head-lora-32;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  &-carousel {
+    position: relative;
+    .review {
+      &-item {
+        border: 2px solid #2a592e;
+        border-radius: 10px;
+        padding: 30px;
+        width: 396px;
+        height: 267px;
+        box-sizing: border-box;
+        &-head {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+        }
+        &-image {
+          height: 60px;
+          width: 60px;
+          border-radius: 50%;
+          background-position: center;
+          background-size: cover;
+          margin-right: 26px;
+        }
+        &-name {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          font-size: 16px;
+          color: $green-text-color;
+        }
+        &-text {
+          font-size: 16px;
+          line-height: 140%;
+          color: $gray-text-color;
+        }
+      }
+    }
+  }
+  &-arrows {
+    display: flex;
+    a {
+      top: calc(50% - 5px);
+      display: flex;
+      cursor: pointer;
+      position: absolute;
+      &.move {
+        &-backward {
+          left: -41px;
+        }
+        &-forward {
+          right: -41px;
+        }
+      }
+    }
+  }
+}
+
+.map iframe {
+  vertical-align: bottom;
+}

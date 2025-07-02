@@ -1,0 +1,102 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.detail {
+  padding: 101px 0 110px;
+  &-title {
+  @include head-lora-36;
+  }
+  &-product {
+    margin: 30px 0 120px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &-image {
+    width: 528px;
+    height: 528px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+  &-info {
+    width: 605px;
+    &-items {
+      margin-bottom: 51px;
+    }
+    &-item {
+      display: flex;
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: 1px solid #e7f1e8;
+
+      &:first-child {
+        border-top: 0;
+        margin-top: 0;
+        border-top: 0;
+      }
+      &-text {
+        margin-left: 22px;
+        max-width: 528px;
+      }
+      &-title {
+        font-style: normal;
+        font-weight: 500;
+        margin-bottom: 15px;
+        font-size: 20px;
+        color: $green-text-color;
+      }
+      &-description {
+        font-size: 16px;
+        line-height: 130%;
+        color: $gray-text-color;
+      }
+    }
+    &-param {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      margin-top: 12px;
+      &-name {
+        font-weight: 500;
+        margin-right: 10px;
+      }
+    }
+    &-params {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      &-count {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-weight: 500;
+          font-size: 16px;
+          margin-right: 20px;
+        }
+      }
+      &-price {
+        font-weight: 700;
+        font-size: 40px;
+        color: #313131;
+      }
+    }
+    &-actions {
+      display: flex;
+      align-items: center;
+      margin-top: 22px;
+
+      .button {
+        width: 290px;
+
+        &-transparent {
+          width: 307px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  .recommended-products {
+  }
+}
