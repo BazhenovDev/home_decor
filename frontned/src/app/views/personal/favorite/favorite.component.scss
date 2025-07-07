@@ -1,0 +1,63 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.favorite {
+  padding: 50px 0 110px;
+  &-title {
+    @include head-lora-36;
+    color: $green-text-color;
+    margin-bottom: 35px;
+  }
+  &-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #E7F1E8;
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+    &-image {
+      background-position: center;
+      background-size: cover;
+      width: 100px;
+      height: 100px;
+      border-radius: 5px;
+    }
+    &-name {
+      margin-left: 24px;
+      font-size: 20px;
+      color: $gray-text-color;
+      width: 567px;
+      margin-right: 20px;
+    }
+    &-price {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: $gray-text-color;
+      width: 110px;
+      margin-right: 183px;
+    }
+    &-action button {
+      width: 160px;
+    }
+    &-remove {
+      margin-left: 60px;
+      cursor: pointer;
+    }
+  }
+  &-empty {
+    margin: 20px 0 100px;
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    .button {
+      width: 255px;
+    }
+  }
+}

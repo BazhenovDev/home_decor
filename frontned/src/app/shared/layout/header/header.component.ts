@@ -28,8 +28,13 @@ export class HeaderComponent implements OnInit {
     });
 
     this.cartService.getCartCount()
-      .subscribe(count => {
-        this.count = count.count;
+      .subscribe((count: {count: number} | DefaultResponseType) => {
+
+        if ((count as DefaultResponseType).error !== undefined) {
+          throw new Error((count as DefaultResponseType).message);
+        }
+
+        this.count = (count as {count: number}).count;
       });
 
     this.cartService.count$.subscribe(count => {

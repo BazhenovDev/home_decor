@@ -40,6 +40,16 @@ export class AuthService {
     throw throwError(()=> 'Can not find tokens');
   }
 
+  refresh(): Observable<DefaultResponseType | LoginResponseType> {
+    const tokens = this.getTokens();
+    if (tokens && tokens.refreshToken) {
+      return this.http.post<DefaultResponseType | LoginResponseType>(`${environment.api}refresh`, {
+        refreshToken: tokens.refreshToken,
+      })
+    }
+    throw throwError(()=> 'Can not use token');
+  }
+
   public getIsLoggedIn(): boolean {
     return this.isLogged;
   }

@@ -5,6 +5,12 @@ import {ProductType} from "../../../../types/product.type";
 import {ActivatedRoute} from "@angular/router";
 import {environment} from "../../../../environments/environment";
 import {CartService} from "../../../shared/services/cart.service";
+import {FavoriteService} from "../../../shared/services/favorite.service";
+import {FavoriteType} from "../../../../types/favorite.type";
+import {DefaultResponseType} from "../../../../types/default-response.type";
+import {AuthService} from "../../../core/auth/auth.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {CartType} from "../../../../types/cart.type";
 
 @Component({
   selector: 'app-detail',
@@ -45,8 +51,12 @@ export class DetailComponent implements OnInit {
     nav: false
   }
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
-              private cartService: CartService,) {
+  constructor(private productService: ProductService,
+              private activatedRoute: ActivatedRoute,
+              private cartService: CartService,
+              private favoriteService: FavoriteService,
+              private authService: AuthService,
+              private _snackBar: MatSnackBar,) {
   }
 
   ngOnInit(): void {
@@ -58,21 +68,39 @@ export class DetailComponent implements OnInit {
       if (params['url']) {
         this.productService.getProduct(params['url'])
           .subscribe(product => {
+            this.product = product;
 
             this.cartService.getCart()
-              .subscribe(cart => {
+              .subscribe((cart: CartType | DefaultResponseType) => {
 
-                if (cart) {
-                  const productInCart = cart.items.find(item => item.product.id === product.id);
-                  if (productInCart) {
-                    product.countInCart = productInCart.quantity;
-                    this.count = product.countInCart;
-                  }
+                if ((cart as DefaultResponseType).error !== undefined) {
+                  throw new Error((cart as DefaultResponseType).message);
                 }
 
-                this.product = product;
-              })
+                const cartDataResponse = (cart as CartType);
 
+                if (cartDataResponse) {
+                  const productInCart = cartDataResponse.items.find(item => item.product.id === this.product.id);
+                  if (productInCart) {
+                    this.product.countInCart = productInCart.quantity;
+                    this.count = this.product.countInCart;
+                  }
+                }
+              });
+            if (this.authService.getIsLoggedIn()) {
+              this.favoriteService.getFavorites()
+                .subscribe((data: DefaultResponseType | FavoriteType[]) => {
+                  if ((data as DefaultResponseType).error !== undefined) {
+                    const error = (data as DefaultResponseType).message;
+                    throw new Error(error);
+                  }
+                  const products = (data as FavoriteType[]);
+                  const currentProductExists = products.find(product => product.id === this.product.id);
+                  if (currentProductExists) {
+                    this.product.isInFavorite = true;
+                  }
+                })
+            }
             this.showLoader = false;
             window.scrollTo(0, 300);
           })
@@ -89,7 +117,11 @@ export class DetailComponent implements OnInit {
     this.count = value;
     if (this.product.countInCart) {
       this.cartService.updateCart(this.product.id, this.count)
-        .subscribe(data => {
+        .subscribe((data: DefaultResponseType | CartType) => {
+          if ((data as DefaultResponseType).error !== undefined) {
+            throw new Error((data as DefaultResponseType).message);
+          }
+
           this.product.countInCart = this.count;
         })
     }
@@ -97,17 +129,52 @@ export class DetailComponent implements OnInit {
 
   addToCart(): void {
     this.cartService.updateCart(this.product.id, this.count)
-      .subscribe(item => {
+      .subscribe((item: DefaultResponseType | CartType) => {
+        if ((item as DefaultResponseType).error !== undefined) {
+          throw new Error((item as DefaultResponseType).message);
+        }
         this.product.countInCart = this.count;
       })
   }
 
   removeFromCart(): void {
     this.cartService.updateCart(this.product.id, 0)
-      .subscribe(item => {
+      .subscribe((item: DefaultResponseType | CartType) => {
+        if ((item as DefaultResponseType).error !== undefined) {
+          throw new Error((item as DefaultResponseType).message);
+        }
         this.product.countInCart = 0;
         this.count = 1;
       })
+  }
+
+  updateFavorite() {
+
+    if (!this.authService.getIsLoggedIn()) {
+      this._snackBar.open('Для добавления в избранное необходимо авторизоваться');
+      return;
+    }
+
+    if (this.product.isInFavorite) {
+
+      this.favoriteService.removeFavorite(this.product.id)
+        .subscribe((data: DefaultResponseType) => {
+          if (data.error) {
+            throw new Error(data.message);
+          }
+          this.product.isInFavorite = false;
+        })
+
+    } else {
+      this.favoriteService.addFavorite(this.product.id)
+        .subscribe((data: FavoriteType | DefaultResponseType) => {
+          if ((data as DefaultResponseType).error !== undefined) {
+            throw new Error((data as DefaultResponseType).message);
+          }
+
+          this.product.isInFavorite = true;
+        });
+    }
   }
 
 }
