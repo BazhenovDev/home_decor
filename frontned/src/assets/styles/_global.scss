@@ -63,6 +63,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     span {
       margin-left: 16px;
     }
@@ -77,6 +78,7 @@ html, body {
     &:first-child {
       display: block;
     }
+
     &:last-child {
       display: none;
     }
@@ -86,6 +88,7 @@ html, body {
     &.button-in-cart {
       border-color: red;
     }
+
     &.button-in-cart span {
       &:first-child {
         display: none;
@@ -107,10 +110,12 @@ a.button {
   &-content {
     background-color: white;
   }
+
   &-item {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     color: $green-text-color;
+
     a {
       text-decoration: none;
       color: $green-text-color;
@@ -125,14 +130,17 @@ a.button {
     align-items: center;
     margin-bottom: 50px;
   }
+
   &-title {
     @include head-lora-32;
   }
+
   &-arrows {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
+
     a {
       cursor: pointer;
     }
@@ -149,6 +157,7 @@ a.button {
   display: grid;
   place-items: center;
   z-index: 5;
+
   .flower {
     animation: spin 2s infinite linear;
   }
@@ -161,4 +170,63 @@ a.button {
   100% {
     transform: rotate(360deg);
   }
+}
+
+[type='radio']:checked,
+[type='radio']:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+[type='radio']:checked + label,
+[type='radio']:not(:checked) + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+}
+
+[type='radio']:checked + label:before,
+[type='radio']:not(:checked) + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #2A592E;
+  border-radius: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+[type='radio']:checked + label:after,
+[type='radio']:not(:checked) + label:after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: #2A592E;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border-radius: 100%;
+  transition: all .2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+
+[type='radio']:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+[type='radio']:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.mat-dialog-container {
+  border-radius: 10px !important;
+  padding: 0 !important;
 }
