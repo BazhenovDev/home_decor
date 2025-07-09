@@ -11,6 +11,9 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {OrderService} from "../../../shared/services/order.service";
 import {OrderType} from "../../../../types/order.type";
 import {HttpErrorResponse} from "@angular/common/http";
+import {UserService} from "../../../shared/services/user.service";
+import {UserInfoType} from "../../../../types/user-info.type";
+import {AuthService} from "../../../core/auth/auth.service";
 
 @Component({
   selector: 'app-order',
@@ -88,7 +91,9 @@ export class OrderComponent implements OnInit {
               private _snackBar: MatSnackBar,
               private dialog: MatDialog,
               private fb: FormBuilder,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private authService: AuthService,
+              private userService: UserService) {
     this.updateDeliveryTypeValidation();
   }
 
@@ -105,7 +110,38 @@ export class OrderComponent implements OnInit {
           return;
         }
         this.calculateTotal();
-      })
+      });
+
+      if (this.authService.getIsLoggedIn()) {
+        this.userService.getUserInfo()
+          .subscribe((data: DefaultResponseType | UserInfoType) => {
+            if ((data as DefaultResponseType).error !== undefined) {
+              throw new Error((data as DefaultResponseType).message);
+            }
+
+            const userInfo = data as UserInfoType;
+
+            const paramsToUpdate = {
+              firstName: userInfo.firstName || '',
+              lastName: userInfo.lastName || '',
+              fatherName: userInfo.fatherName || '',
+              phone: userInfo.phone || '',
+              paymentType: userInfo.paymentType ? userInfo.paymentType : PaymentType.cardOnline,
+              email: userInfo.email || '',
+              street: userInfo.street || '',
+              house: userInfo.house || '',
+              entrance: userInfo.entrance || '',
+              apartment: userInfo.apartment || '',
+              comment: ''
+            }
+
+            this.orderForm.setValue(paramsToUpdate);
+            if (userInfo.deliveryType) {
+              this.deliveryType = userInfo.deliveryType;
+            }
+
+          });
+      }
   }
 
   calculateTotal(): void {
