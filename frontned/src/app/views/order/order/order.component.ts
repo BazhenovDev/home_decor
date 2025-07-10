@@ -224,7 +224,7 @@ export class OrderComponent implements OnInit {
             this.dialogRef = this.dialog.open(this.popup);
             this.dialogRef.backdropClick()
               .subscribe(() => {
-                this.router.navigate(['/orders']);
+                this.router.navigate(['']);
               });
               this.cartService.setCount(0);
           },

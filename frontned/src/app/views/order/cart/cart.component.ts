@@ -52,8 +52,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
 
-    window.scrollTo(0, 250);
-
     this.productService.getBestProducts()
       .subscribe(products => {
         this.extraProducts = products;

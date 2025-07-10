@@ -23,7 +23,6 @@ export class DetailComponent implements OnInit {
   product!: ProductType;
   serverStaticPath = environment.serverStaticPath;
   count: number = 1;
-  showLoader: boolean = false;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -63,8 +62,6 @@ export class DetailComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(params => {
 
-      this.showLoader = true;
-
       if (params['url']) {
         this.productService.getProduct(params['url'])
           .subscribe(product => {
@@ -101,8 +98,6 @@ export class DetailComponent implements OnInit {
                   }
                 })
             }
-            this.showLoader = false;
-            window.scrollTo(0, 300);
           })
       }
     })

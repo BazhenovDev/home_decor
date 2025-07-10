@@ -37,7 +37,6 @@ export class CatalogComponent implements OnInit {
   pages: number[] = [];
   sortingOpen: boolean = false;
   showInfoProductNotFound: boolean = false;
-  showLoader: boolean = false;
   cart: CartType | null = null;
   favoriteProduct: FavoriteType[] | null = null;
 
@@ -83,21 +82,16 @@ export class CatalogComponent implements OnInit {
           this.processCatalog();
         }
       })
-
-
-    window.scrollTo(0, 300);
   }
 
   processCatalog() {
     this.categoryService.getCategoriesWithType()
       .subscribe(categories => {
-        this.showLoader = true;
         this.categoriesWithTypes = categories;
 
         this.activatedRoute.queryParams
           .pipe(debounceTime(800))
           .subscribe(params => {
-            this.showLoader = true;
             this.activeParams = ActiveParamUtil.processParams(params);
 
             this.appliedFilters = [];
@@ -179,10 +173,6 @@ export class CatalogComponent implements OnInit {
                 } else {
                   this.showInfoProductNotFound = false
                 }
-
-                this.showLoader = false;
-
-
               });
 
           });

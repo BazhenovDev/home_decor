@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.searchField.valueChanges
       .pipe(
         debounceTime(500)
