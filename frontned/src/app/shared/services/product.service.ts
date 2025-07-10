@@ -13,7 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getBestProducts(): Observable<ProductType[]> {
-    return this.http.get<ProductType[]>(environment.api + 'products/best')
+    return this.http.get<ProductType[]>(environment.api + 'products/best');
   }
 
   getProducts(params: ActiveParamsType): Observable<{totalCount: number, pages: number, items: ProductType[] }> {
@@ -23,7 +23,11 @@ export class ProductService {
   }
 
   getProduct(url: string): Observable<ProductType> {
-    return this.http.get<ProductType>(environment.api + 'products/' + url)
+    return this.http.get<ProductType>(environment.api + 'products/' + url);
+  }
+
+  getSearchProducts(query: string): Observable<ProductType[]> {
+    return this.http.get<ProductType[]>(environment.api + 'products/search?query=' + query);
   }
 
 }
