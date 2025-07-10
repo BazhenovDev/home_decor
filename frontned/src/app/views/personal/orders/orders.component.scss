@@ -1,0 +1,81 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/personal";
+
+.orders {
+  padding: 50px 0 156px;
+  font-size: 16px;
+  &-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: $gray-text-color;
+    margin-bottom: 14px;
+    &-additional {
+      color: $gray-text-color;
+      margin-bottom: 67px;
+    }
+  }
+
+  &-empty {
+    margin: 20px 0 100px;
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    .button {
+      width: 255px;
+    }
+  }
+
+  &-list {
+    &-item {
+      border-bottom: 1px solid #E7F1E8;
+      padding-bottom: 46px;
+      margin-bottom: 47px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: 0;
+      }
+      &-number {
+        font-size: 20px;
+        color: #111;
+        text-decoration: underline;
+        width: 297px;
+        margin-right: 20px;
+      }
+      &-products {
+        width: 509px;
+        margin-right: 20px;
+        color: #ADADAD;
+        &-count {
+          margin-bottom: 12px;
+        }
+        &-list tr td:first-child {
+          padding-left: 10px;
+          padding-right: 20px;
+        }
+      }
+      &-status {
+        box-sizing: border-box;
+        padding: 8px 24px;
+        text-align: center;
+        border: 1px solid #456F49;
+        color: #456F49;
+        background: transparent;
+        border-radius: 50px;
+      }
+      &-price {
+        width: 186px;
+        text-align: right;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        color: $gray-text-color;
+      }
+    }
+  }
+}
