@@ -22,7 +22,17 @@ export class CartService {
   }
 
   getCart(): Observable<CartType | DefaultResponseType> {
-    return this.http.get<CartType | DefaultResponseType>(`${environment.api}cart`, {withCredentials: true});
+    return this.http.get<CartType | DefaultResponseType>(`${environment.api}cart`, {withCredentials: true})
+      // .pipe(
+      //   tap(data => {
+      //     if (!data.hasOwnProperty('error')) {
+      //       let count = 0;
+      //       (data as CartType).items.forEach(item => {
+      //         count += item.quantity;
+      //       });
+      //       this.setCount(count);
+      //     }
+      //   }));
   }
 
   getCartCount(): Observable<{ count: number } | DefaultResponseType> {

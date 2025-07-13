@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryType} from "../../../types/category.type";
 import {CategoryService} from "../services/category.service";
 import {CategoryWithType} from "../../../types/category-with-type.type";
 

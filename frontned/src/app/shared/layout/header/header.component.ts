@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
               private router: Router,
               private cartService: CartService,
               private productService: ProductService) {
-    this.isLogged = this.authService.getIsLoggedIn()
+    this.isLogged = this.authService.getIsLoggedIn();
   }
 
   ngOnInit(): void {
@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit {
 
     this.cartService.count$.subscribe(count => {
       this.count = count;
-    })
+    });
   }
 
   logout(): void {

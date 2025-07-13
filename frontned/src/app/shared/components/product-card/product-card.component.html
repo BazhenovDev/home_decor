@@ -1,6 +1,6 @@
 <div class="product-card" *ngIf="product" (click)="navigate()"
      [class.is-light]="isLight">
-  <div *ngIf="!isLight" class="product-card-favorite" (click)="updateFavorite()">
+  <div *ngIf="!isLight && isLogged" class="product-card-favorite" (click)="updateFavorite()">
         <span *ngIf="product.isInFavorite">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
