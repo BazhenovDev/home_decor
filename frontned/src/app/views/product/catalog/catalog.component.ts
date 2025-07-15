@@ -242,8 +242,6 @@ export class CatalogComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   clickOnWindow(event: Event) {
     if (!(event.target as HTMLElement).className.includes('catalog-sorting-head')
-      && !(event.target as HTMLElement).className.includes('catalog-sorting-head-span')
-        && !(event.target as HTMLElement).className.includes('catalog-sorting-head-svg')
       && this.sortingOpen) {
       this.sortingOpen = false;
     }
