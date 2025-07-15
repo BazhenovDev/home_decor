@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductService} from "../../../shared/services/product.service";
 import {ProductType} from "../../../../types/product.type";
 import {CategoryService} from "../../../shared/services/category.service";
@@ -82,6 +82,7 @@ export class CatalogComponent implements OnInit {
           this.processCatalog();
         }
       })
+
   }
 
   processCatalog() {
@@ -230,6 +231,21 @@ export class CatalogComponent implements OnInit {
       this.router.navigate(['/catalog'], {
         queryParams: this.activeParams
       });
+    } else if (!this.activeParams.page) {
+      this.activeParams.page = 2;
+      this.router.navigate(['/catalog'], {
+        queryParams: this.activeParams
+      })
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOnWindow(event: Event) {
+    if (!(event.target as HTMLElement).className.includes('catalog-sorting-head')
+      && !(event.target as HTMLElement).className.includes('catalog-sorting-head-span')
+        && !(event.target as HTMLElement).className.includes('catalog-sorting-head-svg')
+      && this.sortingOpen) {
+      this.sortingOpen = false;
     }
   }
 
